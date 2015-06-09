@@ -5,7 +5,7 @@ If your Mac OS X box has volumes that OS X does not recognise, e.g. Linux volume
 
 Unfortunately, OS X doesn't read volume names of some (all?) ext4 volumes, nor does it recognise their UUIDs, which makes it _impossible to use /etc/fstab to block the volumes_.
 
-This is a Launch Daemon blocking disks by their disk name.
+This Launch Daemon resolves the problem by blocking disks by their disk name.
 Disk names have to be specified in `<ProgramArguments>` of `com.diskejectd.plist`.
 It helps you to block/get rid of "the disk you inserted was not readable by this computer" error message in Mac OS X.
 
