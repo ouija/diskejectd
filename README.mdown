@@ -1,7 +1,11 @@
 diskejectd
 ===========
 
-This is a Launch Daemon blocking disks specified in `<ProgramArguments>` of `com.diskejectd.plist`.
+If your Mac OS X box has volumes that OS X does not recognise, e.g. Linux volumes partitioned with ext4, you will be bugged with a popup stating "The disk you inserted was not readable by this computer" on every boot.
+Unfortunately, OS X doesn't read volume names of some (all?) ext4 volumes, nor does it recognise their UUIDs, which makes it _impossible to use /etc/fstab to block the volumes_.
+
+This is a Launch Daemon blocking disks by their disk name.
+Disk names have to be specified in `<ProgramArguments>` of `com.diskejectd.plist`.
 It helps you to block/get rid of "the disk you inserted was not readable by this computer" error message in Mac OS X.
 
 Based on original code published at:
