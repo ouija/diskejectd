@@ -12,7 +12,10 @@ It helps you to block/get rid of "the disk you inserted was not readable by this
 Based on original code published at:
 [superuser.com](http://superuser.com/questions/336455/mac-lion-fstab-is-deprecated-so-what-replaces-it-to-prevent-a-partition-from-m/336474#336474)
 
-UPDATE:  [this method](https://discussions.apple.com/docs/DOC-7942) might work more consistantly rather than using this **diskjectd** launch daemon:
+UPDATE:
+-------
+
+Note that [this method](https://discussions.apple.com/docs/DOC-7942) might work more consistantly rather than using this **diskjectd** launch daemon:
 ```
 1) Make sure the disk you want to prevent mounting at boot is mounted.
 
