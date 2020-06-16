@@ -12,6 +12,43 @@ It helps you to block/get rid of "the disk you inserted was not readable by this
 Based on original code published at:
 [superuser.com](http://superuser.com/questions/336455/mac-lion-fstab-is-deprecated-so-what-replaces-it-to-prevent-a-partition-from-m/336474#336474)
 
+UPDATE:  [this method](https://discussions.apple.com/docs/DOC-7942) might work more consistantly:
+```
+1) Make sure the disk you want to prevent mounting at boot is mounted.
+
+2) Launch Terminal.
+
+3) Run the following command to print out information about the disk:
+
+     diskutil info /Volumes/<volume that shouldn't be mounted>
+
+4) Locate the line that starts with: Volume UUID:. Select the UUID (Universal Unique Identifier) that follows on the rest of the line. It will be something that looks like FF9DBDC4-F77F-3F72-A6C2-26676F39B7CE. Your value will be different
+
+5) Copy the UUID to the clipboard.
+
+6) Navigate to /etc by typing the following and pressing enter:
+
+     cd /etc
+
+7) Edit (or create) an fstab file by typing the following and pressing enter:
+
+     sudo vifs
+
+8) Enter the following line, substituting the UUID you copied in step 5). (Note: vifs uses the value of the EDITOR environment variable to pick the text editor to use. This article assumes you are using the default value of vim.) In vim, the editor starts in command mode. To add a new line, use the arrow keys to move to the end of the document and press the o key to append a new line and enter edit mode. Then type the following:
+
+    UUID=FF9DBDC4-F77F-3F72-A6C2-26676F39B7CE none hfs rw,noauto
+
+and press the return key.
+
+9) Type escape to return to command mode and then type ZZ (shift key down) to save and exit vifs (or some other method to save and exit if you are using something other than vim).
+
+10) Type the following and press enter to reset the auto mounter:
+
+     sudo automount -vc
+
+11) Quit Terminal
+```
+
 
 Installation
 ------------
